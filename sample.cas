@@ -1,0 +1,20 @@
+using "other.cas";
+// Coment "j test"
+/* 
+    "j test2"
+    Multiline comment.
+*/
+
+int i = 10;
+
+print("Hello, World!"); // top level
+
+void DoStuff(int input)
+{
+    print("My number is: " + input);
+}
+
+repeat(i ++> 10)
+{
+    DoStuff(i);
+}
