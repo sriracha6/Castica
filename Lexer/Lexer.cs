@@ -25,6 +25,7 @@ namespace Lexer
 
             string currentToken = "";
             bool singleSlashAlready = false;
+            bool operatorMode = false;
             for(int i = 0; i < text.Length; i++)
             {
                 char c = text[i];
@@ -39,7 +40,7 @@ namespace Lexer
                 }
                 if(lexMode == LexMode.Token && (DELIMITERS.Contains(c) || OPERATORS.Contains(c)))
                 {
-                    Tokens.Add(new Token(TokenType.Token, currentToken));
+                    Tokens.Add(new Token(operatorMode ? TokenType.Operator : TokenType.Token, currentToken));
                     currentToken = "";
                     lexMode = LexMode.Whitespace;
                 }
@@ -51,7 +52,16 @@ namespace Lexer
                     lexMode = LexMode.Whitespace;
                     continue;
                 }
-                if(lexMode == LexMode.String) currentToken += c;
+                if(lexMode == LexMode.String) 
+                {
+                    if(operatorMode && lexMode == LexMode.Token && currentToken.Length == 1)
+                    {
+                        Tokens.Add(new Token(TokenType.Operator, currentToken));
+                        currentToken = "";
+                        lexMode = LexMode.Whitespace;
+                    }
+                    else currentToken += c;
+                }
                 if(c == STRING_CHAR)
                 {
                     lexMode = LexMode.String;
@@ -69,6 +79,7 @@ namespace Lexer
                     Tokens.Add(new Token(TokenType.Endline, END_LINE.ToString()));
                 if(lexMode == LexMode.Whitespace && !DELIMITERS.Contains(c) && c != END_LINE)
                 {
+                    operatorMode = OPERATORS.Contains(c);
                     lexMode = LexMode.Token;
                     currentToken += c;
                 }

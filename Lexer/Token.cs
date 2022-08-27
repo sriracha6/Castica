@@ -2,7 +2,7 @@ using System;
 
 namespace Lexer
 {
-    public enum TokenType { Token, String, Number, MathMisc, Endline, StartBrace, EndBrace }
+    public enum TokenType { Token, String, Number, MathMisc, Endline, Operator }
     public enum TokenValue { Using }
     public struct Token
     {
