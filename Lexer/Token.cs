@@ -3,7 +3,7 @@ using System;
 namespace Lexer
 {
     public enum TokenType { Token, String, Number, MathMisc, Endline, Operator }
-    public enum TokenValue { Using }
+    public enum TokenValue { Other, Using }
     public struct Token
     {
         public TokenType TokenType { get; private set; }

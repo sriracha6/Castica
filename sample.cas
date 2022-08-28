@@ -7,14 +7,14 @@ using "other.cas";
 
 int i = 10;
 
-print("Hello, World!"); // top level
+print("Hello, World!\nThis is a test!"); // top level
 
 void DoStuff(int input)
 {
     print("My number is: " + input);
 }
 
-repeat(i ++> 10)
+repeat(i --> 0)
 {
     DoStuff(i);
 }

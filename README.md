@@ -9,13 +9,16 @@ for, if, else, while, repeat, etc., change the pointer. It then executes at the 
 
 TODO:
 [X] Language Design
-[ ] Lexer
+[X] Lexer
     [X] Lex Tokens
     [X] Lex Comments
     [X] Lex Whitespace
-    [ ] Lex Bug: Operators
-    [ ] Lex Bug: Endlines
-    [ ] Lex Numbers/Floats
+    [X] Lex Bug: Operators
+    [X] Lex Numbers/Floats
+    [X] Lex Escape Sequences 
 [ ] Parser
+    [ ] Variables
+    [ ] Functions
 [ ] Executor
+    [ ] Expressions
 [ ] Syntax Highlighting

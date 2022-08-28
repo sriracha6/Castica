@@ -10,7 +10,6 @@ namespace Castica
         {
             string file = File.ReadAllText("sample.cas");//File.ReadAllText(args[0]);
             Lexer.Lexer.Lexify(file);
-            Console.WriteLine(Lexer.Lexer.Tokens.Count);
             foreach(Token t in Lexer.Lexer.Tokens)
                 Console.WriteLine(t.TokenType + " | " + t.Value);
         }
